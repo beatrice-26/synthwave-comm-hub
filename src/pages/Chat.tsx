@@ -10,7 +10,7 @@ interface Message {
 
 const Chat: React.FC = () => {
   const [message, setMessage] = useState('');
-  const [activeTab, setActiveTab] = useState<'user' | 'chat' | 'persona'>('chat');
+  const [activeTab, setActiveTab] = useState<'user' | 'chat' | 'agent'>('chat');
 
   const messages: Message[] = [
     { id: 1, sender: 'user', content: 'Hey! How was your day?', timestamp: '2:30 PM' },
@@ -50,12 +50,12 @@ const Chat: React.FC = () => {
             Chat
           </button>
           <button 
-            onClick={() => setActiveTab('persona')}
+            onClick={() => setActiveTab('agent')}
             className={`flex-1 py-4 text-center font-rajdhani font-semibold transition-all ${
-              activeTab === 'persona' ? 'text-neon-cyan border-b-2 border-neon-cyan' : 'text-muted-foreground'
+              activeTab === 'agent' ? 'text-neon-cyan border-b-2 border-neon-cyan' : 'text-muted-foreground'
             }`}
           >
-            Persona
+            Agent
           </button>
         </div>
       </div>
@@ -213,75 +213,85 @@ const Chat: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Panel - Fake Persona (Hidden on mobile unless active) */}
-        <div className={`${activeTab === 'persona' ? 'block' : 'hidden'} md:block w-full md:w-80 bg-surface-medium border-l border-border p-6`}>
+        {/* Right Panel - Agent Profile (Hidden on mobile unless active) */}
+        <div className={`${activeTab === 'agent' ? 'block' : 'hidden'} md:block w-full md:w-80 bg-surface-medium border-l border-border p-6`}>
           <div className="mb-6">
-            <h3 className="text-lg font-orbitron font-bold text-neon-purple mb-4">FAKE PERSONA</h3>
+            <h3 className="text-lg font-orbitron font-bold text-neon-purple mb-4">AGENT PROFILE</h3>
             
-            {/* Persona Profile */}
+            {/* Agent Profile */}
             <div className="glass rounded-lg p-4 mb-6">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-neon-purple to-neon-pink rounded-full flex items-center justify-center">
                   <Shield className="w-8 h-8 text-background" />
                 </div>
                 <div>
-                  <h4 className="font-orbitron font-bold text-foreground">Emma_Creative</h4>
-                  <p className="text-sm text-muted-foreground">Designer Persona</p>
+                  <h4 className="font-orbitron font-bold text-foreground">Agent_Mike</h4>
+                  <p className="text-sm text-muted-foreground">Senior Chat Specialist</p>
                   <div className="flex items-center space-x-2 mt-1">
-                    <div className="w-2 h-2 bg-neon-purple rounded-full animate-pulse"></div>
-                    <span className="text-xs text-neon-purple font-rajdhani">ACTIVE</span>
+                    <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
+                    <span className="text-xs text-neon-green font-rajdhani">ACTIVE</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Personality Traits */}
+            {/* Agent Stats */}
             <div className="glass rounded-lg p-4 mb-6">
-              <h5 className="font-orbitron font-semibold text-neon-cyan mb-3">PERSONALITY</h5>
-              <div className="space-y-2">
-                {['Creative', 'Empathetic', 'Curious', 'Supportive', 'Optimistic'].map((trait) => (
-                  <div key={trait} className="flex items-center space-x-2">
-                    <Heart className="w-4 h-4 text-neon-pink" />
-                    <span className="text-sm font-rajdhani text-foreground">{trait}</span>
-                  </div>
-                ))}
+              <h5 className="font-orbitron font-semibold text-neon-cyan mb-3">PERFORMANCE</h5>
+              <div className="space-y-3">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground font-rajdhani text-sm">Active Chats</span>
+                  <span className="text-neon-cyan font-semibold">12</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground font-rajdhani text-sm">Response Rate</span>
+                  <span className="text-neon-green font-semibold">98.5%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground font-rajdhani text-sm">Avg Response Time</span>
+                  <span className="text-foreground font-semibold">2.3s</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground font-rajdhani text-sm">Satisfaction</span>
+                  <span className="text-neon-pink font-semibold">4.8/5</span>
+                </div>
               </div>
             </div>
 
-            {/* Interests */}
+            {/* Skills */}
             <div className="glass rounded-lg p-4 mb-6">
-              <h5 className="font-orbitron font-semibold text-neon-green mb-3">INTERESTS</h5>
+              <h5 className="font-orbitron font-semibold text-neon-green mb-3">SPECIALIZATIONS</h5>
               <div className="flex flex-wrap gap-2">
-                {['Design', 'Music', 'Travel', 'Books', 'Photography', 'Art'].map((interest) => (
+                {['Relationship Building', 'Tech Support', 'Sales', 'Customer Service', 'Entertainment'].map((skill) => (
                   <span 
-                    key={interest}
+                    key={skill}
                     className="px-3 py-1 bg-neon-green/20 text-neon-green text-xs font-rajdhani font-semibold rounded-full border border-neon-green/30"
                   >
-                    {interest}
+                    {skill}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Tone Guide */}
+            {/* Current Session */}
             <div className="glass rounded-lg p-4">
-              <h5 className="font-orbitron font-semibold text-neon-pink mb-3">TONE GUIDE</h5>
+              <h5 className="font-orbitron font-semibold text-neon-pink mb-3">SESSION INFO</h5>
               <div className="space-y-3 text-sm font-rajdhani">
                 <div>
-                  <span className="text-neon-cyan font-semibold">Style: </span>
-                  <span className="text-foreground">Friendly & Encouraging</span>
+                  <span className="text-neon-cyan font-semibold">Start Time: </span>
+                  <span className="text-foreground">2:15 PM</span>
                 </div>
                 <div>
-                  <span className="text-neon-cyan font-semibold">Energy: </span>
-                  <span className="text-foreground">Warm & Positive</span>
+                  <span className="text-neon-cyan font-semibold">Duration: </span>
+                  <span className="text-foreground">23 minutes</span>
                 </div>
                 <div>
-                  <span className="text-neon-cyan font-semibold">Approach: </span>
-                  <span className="text-foreground">Ask thoughtful questions</span>
+                  <span className="text-neon-cyan font-semibold">Messages Sent: </span>
+                  <span className="text-foreground">18</span>
                 </div>
                 <div>
-                  <span className="text-neon-cyan font-semibold">Avoid: </span>
-                  <span className="text-foreground">Being too forward</span>
+                  <span className="text-neon-cyan font-semibold">Status: </span>
+                  <span className="text-neon-green">Engaged</span>
                 </div>
               </div>
             </div>
