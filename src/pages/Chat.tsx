@@ -62,8 +62,8 @@ const Chat: React.FC = () => {
 
       <div className="flex h-[calc(100vh-120px)] md:h-[calc(100vh-80px)]">
         {/* Left Panel - Fake Profile (Hidden on mobile unless active) */}
-        <div className={`${activeTab === 'user' ? 'block' : 'hidden'} md:block w-full md:w-80 bg-surface-medium border-r border-border p-6`}>
-          <div className="mb-6">
+        <div className={`${activeTab === 'user' ? 'block' : 'hidden'} md:block w-full md:w-80 bg-surface-medium border-r border-border overflow-y-auto`}>
+          <div className="p-6">
             <h3 className="text-lg font-orbitron font-bold text-neon-purple mb-4">FAKE PROFILE</h3>
             
             {/* Fake Profile */}
@@ -137,9 +137,9 @@ const Chat: React.FC = () => {
         </div>
 
         {/* Middle Panel - Chat (Always visible on mobile when active) */}
-        <div className={`${activeTab === 'chat' ? 'block' : 'hidden'} md:block flex-1 flex flex-col bg-background`}>
+        <div className={`${activeTab === 'chat' ? 'block' : 'hidden'} md:block flex-1 flex flex-col bg-background min-h-0`}>
           {/* Chat Header */}
-          <div className="bg-surface-medium border-b border-border px-6 py-4">
+          <div className="bg-surface-medium border-b border-border px-6 py-4 flex-shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-full flex items-center justify-center">
@@ -166,7 +166,7 @@ const Chat: React.FC = () => {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          <div className="flex-1 overflow-y-auto p-6 space-y-4 min-h-0">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -189,7 +189,7 @@ const Chat: React.FC = () => {
           </div>
 
           {/* Message Input */}
-          <div className="bg-surface-medium border-t border-border p-4">
+          <div className="bg-surface-medium border-t border-border p-4 flex-shrink-0">
             <div className="flex items-center space-x-3">
               <button className="text-muted-foreground hover:text-neon-cyan transition-colors">
                 <Paperclip className="w-5 h-5" />
@@ -218,8 +218,8 @@ const Chat: React.FC = () => {
         </div>
 
         {/* Right Panel - Agent Profile (Hidden on mobile unless active) */}
-        <div className={`${activeTab === 'agent' ? 'block' : 'hidden'} md:block w-full md:w-80 bg-surface-medium border-l border-border p-6`}>
-          <div className="mb-6">
+        <div className={`${activeTab === 'agent' ? 'block' : 'hidden'} md:block w-full md:w-80 bg-surface-medium border-l border-border overflow-y-auto`}>
+          <div className="p-6">
             <h3 className="text-lg font-orbitron font-bold text-neon-purple mb-4">AGENT PROFILE</h3>
             
             {/* Agent Profile */}
