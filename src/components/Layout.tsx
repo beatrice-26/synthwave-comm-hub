@@ -49,6 +49,20 @@ const Layout: React.FC = () => {
                 <span className="font-rajdhani font-medium">Chat</span>
               </NavLink>
 
+              <NavLink
+                to="/profiles"
+                className={({ isActive }) =>
+                  `flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
+                    isActive
+                      ? 'bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30'
+                      : 'text-muted-foreground hover:text-neon-cyan hover:bg-surface-light'
+                  }`
+                }
+              >
+                <User className="w-4 h-4" />
+                <span className="font-rajdhani font-medium">Profiles</span>
+              </NavLink>
+
 
               <NavLink
                 to="/notifications"
@@ -81,7 +95,7 @@ const Layout: React.FC = () => {
 
       {/* Mobile Navigation */}
       <nav className="md:hidden bg-surface-medium border-t border-border fixed bottom-0 left-0 right-0 z-50">
-        <div className="grid grid-cols-3 gap-1 p-2">
+        <div className="grid grid-cols-4 gap-1 p-2">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -123,6 +137,20 @@ const Layout: React.FC = () => {
           >
             <Bell className="w-5 h-5" />
             <span className="text-xs font-rajdhani mt-1">Alerts</span>
+          </NavLink>
+
+          <NavLink
+            to="/profiles"
+            className={({ isActive }) =>
+              `flex flex-col items-center py-2 rounded-lg transition-all ${
+                isActive
+                  ? 'text-neon-cyan'
+                  : 'text-muted-foreground'
+              }`
+            }
+          >
+            <User className="w-5 h-5" />
+            <span className="text-xs font-rajdhani mt-1">Profiles</span>
           </NavLink>
         </div>
       </nav>
